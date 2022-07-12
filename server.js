@@ -1,11 +1,12 @@
 // Grabbing the express stuff to setup the server
 const express = require('express');
 
+//create the port
+const port = process.env.PORT || 3001;
+
 // app variable for using express
 const app = express();
 
-//create the port
-const port = process.env.PORT || 3001;
 
 //create the routes for files in the public folder
 app.use(express.static('public'));
