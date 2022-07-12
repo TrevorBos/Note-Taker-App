@@ -20,6 +20,6 @@ require('./routes/htmlRoute')(app);
 
 
 //app listener (this is how the server should start)
-app.listen(PORT, () => {
-    console.log(`Server can be found at localhost${PORT}`);
+app.listen(port, () => {
+    console.log(`Server can be found at localhost${port}`);
   });
