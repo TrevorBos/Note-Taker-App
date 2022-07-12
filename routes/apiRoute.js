@@ -14,25 +14,25 @@ module.exports = (app) => {
   app.get("/api/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "../db/db.json"));
   });
-};
 
-// POST request - should receive the new note (req.body) and add it to the JSON, then return note to display.
-app.post("/api/notes", (req, res) => {
-  let database = fs.readFileSync("db/db.json");
-  database = JSON.parse(database);
-  res.JSON(database);
-  // This should create the body for the note
-  let myNote = {
-    title: req.body.title,
-    text: req.body.text,
-    //this is where we will use the npm package uniqid to set a fancy id for each note and hopefully allow for deletion
-    id: uniqid(),
-  };
-  // We then want to push the information to the db.json file
-  database.push(myNote);
-  fs.writeFileSync("db/db.json", JSON.stringify(database));
-  res.json(database);
-});
+  // POST request - should receive the new note (req.body) and add it to the JSON, then return note to display.
+  app.post("/api/notes", (req, res) => {
+    let database = fs.readFileSync("db/db.json");
+    database = JSON.parse(database);
+    res.JSON(database);
+    // This should create the body for the note
+    let myNote = {
+      title: req.body.title,
+      text: req.body.text,
+      //this is where we will use the npm package uniqid to set a fancy id for each note and hopefully allow for deletion
+      id: uniqid(),
+    };
+    // We then want to push the information to the db.json file
+    database.push(myNote);
+    fs.writeFileSync("db/db.json", JSON.stringify(database));
+    res.json(database);
+  });
+
 
 // Bonus DELETE request - should receive the id so that it can be removed.
 app.delete("/api/notes", (req, res) => {
@@ -44,3 +44,4 @@ app.delete("/api/notes", (req, res) => {
   fs.writeFileSync("db/db.json", JSON.stringify(noteDelete));
   res.json(noteDelete);
 });
+};
