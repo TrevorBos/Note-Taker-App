@@ -1,7 +1,5 @@
 // Initial variables
-const { application } = require("express");
 const fs = require("fs");
-const { request } = require("http");
 const path = require("path");
 
 // Going to use an npm package that will allow different IDs to be created for each note that is added.
