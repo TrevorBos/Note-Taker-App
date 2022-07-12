@@ -17,7 +17,7 @@ module.exports = (app) => {
   app.post("/api/notes", (req, res) => {
     let database = fs.readFileSync("db/db.json");
     database = JSON.parse(database);
-    res.JSON(database);
+    res.json(database);
     // This should create the body for the note
     let myNote = {
       title: req.body.title,
