@@ -15,6 +15,11 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
 //Route to the files
+require('./routes/apiRoute')(app);
+require('./routes/htmlRoute')(app);
 
 
 //app listener (this is how the server should start)
+app.listen(PORT, () => {
+    console.log(`Server can be found at localhost${PORT}`);
+  });
