@@ -32,11 +32,11 @@ module.exports = (app) => {
   });
 
   // Bonus DELETE request - should receive the id so that it can be removed.
-  app.delete("/api/notes", (req, res) => {
+  app.delete("/api/notes/:id", (req, res) => {
     // read the notes
     let database = JSON.parse(fs.readFileSync("db/db.json"));
     // remove the notes via the unique ID given
-    let noteDelete = database.filter((item) => item.id !== req.params.id);
+    let noteDelete = database.filter(item => item.id !== req.params.id);
     // Rewrite the file
     fs.writeFileSync("db/db.json", JSON.stringify(noteDelete));
     res.json(noteDelete);
